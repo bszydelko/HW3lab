@@ -113,11 +113,11 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
 
 
         //from gallery
-        if(getIntent() != null)
+        if(getIntent().getExtras() != null)
         {
             try{
 
-                Bitmap bitmap = BitmapFactory.decodeStream(openFileInput("bitmap"));textureView.getBitmap();
+                Bitmap bitmap = BitmapFactory.decodeStream(openFileInput("bitmap"));
                 Mat img = new Mat(bitmap.getHeight(), bitmap.getWidth(), CvType.CV_8UC3);
                 Utils.bitmapToMat(bitmap, img);
 
@@ -129,6 +129,7 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
                 showAcceptedRejectedButton(true);
                 ivBitmap.setImageBitmap(bitmap);
                 sudokuBmp = bitmap;
+
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
